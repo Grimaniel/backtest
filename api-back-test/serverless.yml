@@ -6,6 +6,10 @@ provider:
   runtime: nodejs14.x
   stage: dev
   region: us-east-1
+  environment:
+    JWKS_URI: 'https://YOUR-TENANT.us.auth0.com/.well-known/jwks.json'
+    AUDIENCE: 'PRUEBA-OF-YOUR-API' 
+    TOKEN_ISSUER: 'pk_test_LsRBKejzCOEEWosw'
 
 functions:
   getDatosCliente:
@@ -14,3 +18,7 @@ functions:
       - httpApi:
           path: /datoscliente
           method: get
+          authorizer: auth
+  auth:
+    handler: authorizer.handler
+    description: custom authorizer para auth0
