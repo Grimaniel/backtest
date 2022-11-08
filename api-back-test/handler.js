@@ -40,6 +40,9 @@ const getDatosCliente = async (event, context, callback) => {
     return { statusCode: StatusCodes.INTERNAL_SERVER_ERROR, headers: _headers_get, body: JSON.stringify({ message: "Information not extracted", data: "", errors: err }) }
   }
 };
+
+
 module.exports = {
   getDatosCliente,
+  
 };
