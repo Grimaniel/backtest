@@ -42,7 +42,7 @@ const getDatosCliente = async (event, context, callback) => {
   }
 };
 
-const authorize = async (event, context, callback) => {
+const auth = async (event, context, callback) => {
   try {
    const data = await authorizer.authenticate(event);
   }
@@ -54,5 +54,5 @@ const authorize = async (event, context, callback) => {
 };
 module.exports = {
   getDatosCliente,
-  authorize,
+  auth,
 };

@@ -20,5 +20,5 @@ functions:
           method: get
           authorizer: auth
   auth:
-    handler: handler.authorize
+    handler: handler.auth
     description: custom authorizer para auth0
