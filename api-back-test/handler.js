@@ -7,6 +7,7 @@ AWS.config.update({ region: 'us-east-1' });
 //const mysql = require('./src/db/mysql');
 
 const validation = require('./functions/validation.js');
+const authorizer = require('./functions/authorizer.js');
 //Functions
 
 const { StatusCodes } = require('http-status-codes');
@@ -41,8 +42,17 @@ const getDatosCliente = async (event, context, callback) => {
   }
 };
 
-
+const authorize = async (event, context, callback) => {
+  try {
+   const data = await authorizer.authenticate(event);
+  }
+  catch (err) {
+      console.log(err);
+      return context.fail("Unauthorized");
+  }
+  return data;
+};
 module.exports = {
   getDatosCliente,
-  
+  authorize,
 };
